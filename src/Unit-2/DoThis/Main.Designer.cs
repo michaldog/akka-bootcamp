@@ -28,49 +28,75 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.sysChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btn_AddSeries = new System.Windows.Forms.Button();
+            this.btnCpu = new System.Windows.Forms.Button();
+            this.btnMemory = new System.Windows.Forms.Button();
+            this.btnDisk = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sysChart)).BeginInit();
             this.SuspendLayout();
             // 
             // sysChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.sysChart.ChartAreas.Add(chartArea3);
+            chartArea7.Name = "ChartArea1";
+            this.sysChart.ChartAreas.Add(chartArea7);
             this.sysChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.sysChart.Legends.Add(legend3);
+            legend7.Name = "Legend1";
+            this.sysChart.Legends.Add(legend7);
             this.sysChart.Location = new System.Drawing.Point(0, 0);
             this.sysChart.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.sysChart.Name = "sysChart";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.sysChart.Series.Add(series3);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.sysChart.Series.Add(series7);
             this.sysChart.Size = new System.Drawing.Size(1368, 858);
             this.sysChart.TabIndex = 0;
             this.sysChart.Text = "sysChart";
             // 
-            // btn_AddSeries
+            // btnCpu
             // 
-            this.btn_AddSeries.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_AddSeries.Location = new System.Drawing.Point(1226, 758);
-            this.btn_AddSeries.Name = "btn_AddSeries";
-            this.btn_AddSeries.Size = new System.Drawing.Size(130, 44);
-            this.btn_AddSeries.TabIndex = 1;
-            this.btn_AddSeries.Text = "Add series";
-            this.btn_AddSeries.UseVisualStyleBackColor = true;
-            this.btn_AddSeries.Click += new System.EventHandler(this.btn_AddSeries_Click);
+            this.btnCpu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCpu.Location = new System.Drawing.Point(1171, 561);
+            this.btnCpu.Name = "btnCpu";
+            this.btnCpu.Size = new System.Drawing.Size(185, 53);
+            this.btnCpu.TabIndex = 1;
+            this.btnCpu.Text = "CPU (ON)";
+            this.btnCpu.UseVisualStyleBackColor = true;
+            this.btnCpu.Click += new System.EventHandler(this.btnCpu_Click);
+            // 
+            // btnMemory
+            // 
+            this.btnMemory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMemory.Location = new System.Drawing.Point(1171, 638);
+            this.btnMemory.Name = "btnMemory";
+            this.btnMemory.Size = new System.Drawing.Size(185, 55);
+            this.btnMemory.TabIndex = 2;
+            this.btnMemory.Text = "Memory (OFF)";
+            this.btnMemory.UseVisualStyleBackColor = true;
+            this.btnMemory.Click += new System.EventHandler(this.btnMemory_Click);
+            // 
+            // btnDisk
+            // 
+            this.btnDisk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDisk.Location = new System.Drawing.Point(1171, 711);
+            this.btnDisk.Name = "btnDisk";
+            this.btnDisk.Size = new System.Drawing.Size(185, 44);
+            this.btnDisk.TabIndex = 3;
+            this.btnDisk.Text = "Disk (OFF)";
+            this.btnDisk.UseVisualStyleBackColor = true;
+            this.btnDisk.Click += new System.EventHandler(this.btnDisk_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1368, 858);
-            this.Controls.Add(this.btn_AddSeries);
+            this.Controls.Add(this.btnDisk);
+            this.Controls.Add(this.btnMemory);
+            this.Controls.Add(this.btnCpu);
             this.Controls.Add(this.sysChart);
             this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Main";
@@ -85,7 +111,9 @@
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart sysChart;
-        private System.Windows.Forms.Button btn_AddSeries;
+        private System.Windows.Forms.Button btnCpu;
+        private System.Windows.Forms.Button btnMemory;
+        private System.Windows.Forms.Button btnDisk;
     }
 }
 
