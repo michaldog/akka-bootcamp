@@ -18,12 +18,12 @@
             //var validationActor = MyActorSystem.ActorOf(validationActorProps, "validationActor");
 
             var tailCoordinationActorProps = Props.Create(() => new TailCoordinatorActor());
-            var tailCoordinationActor = MyActorSystem.ActorOf(tailCoordinationActorProps, "tailCoordinationActor");
+            MyActorSystem.ActorOf(tailCoordinationActorProps, "tailCoordinationActor");
 
-            var fileValidationActorProps = Props.Create(() => new FileValidatorActor(consoleWriterActor, tailCoordinationActor));
-            var fileValidationActor = MyActorSystem.ActorOf(fileValidationActorProps, "fileValidationActor");
+            var fileValidationActorProps = Props.Create(() => new FileValidatorActor(consoleWriterActor));
+            MyActorSystem.ActorOf(fileValidationActorProps, "validationActor");
 
-            var consoleReaderActorProps = Props.Create(() => new ConsoleReaderActor(fileValidationActor));
+            var consoleReaderActorProps = Props.Create<ConsoleReaderActor>();
             var consoleReadActor = MyActorSystem.ActorOf(consoleReaderActorProps, "consoleReaderActor");
 
             // tell console reader to begin
