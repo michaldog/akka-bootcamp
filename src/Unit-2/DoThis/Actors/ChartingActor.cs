@@ -5,7 +5,7 @@
     using System.Windows.Forms.DataVisualization.Charting;
     using Akka.Actor;
 
-    public class ChartingActor : UntypedActor
+    public class ChartingActor : ReceiveActor
     {
         #region Messages
 
@@ -17,6 +17,16 @@
             }
 
             public Dictionary<string, Series> InitialSeries { get; private set; }
+        }
+
+        public class AddSeries
+        {
+            public AddSeries(Series series)
+            {
+                Series = series;
+            }
+
+            public Series Series { get; private set; }
         }
 
         #endregion
@@ -32,18 +42,21 @@
         {
             _chart = chart;
             _seriesIndex = seriesIndex;
-        }
 
-        protected override void OnReceive(object message)
-        {
-            if (message is InitializeChart)
-            {
-                var ic = message as InitializeChart;
-                HandleInitialize(ic);
-            }
+            Receive<InitializeChart>(x => HandleInitialize(x));
+            Receive<AddSeries>(x => HandleAddSeries(x));
         }
 
         #region Individual Message Type Handlers
+
+        private void HandleAddSeries(AddSeries series)
+        {
+            if (!string.IsNullOrEmpty(series.Series.Name) && !_seriesIndex.ContainsKey(series.Series.Name))
+            {
+                _seriesIndex.Add(series.Series.Name, series.Series);
+                _chart.Series.Add(series.Series);
+            }
+        }
 
         private void HandleInitialize(InitializeChart ic)
         {
