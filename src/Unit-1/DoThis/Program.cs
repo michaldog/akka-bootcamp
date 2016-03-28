@@ -11,9 +11,14 @@
             // initialize MyActorSystem
             MyActorSystem = ActorSystem.Create("MyActorSystem");
 
-            // time to make your first actors!
-            var consoleWriteActor = MyActorSystem.ActorOf(Props.Create(() => new ConsoleWriterActor()));
-            var consoleReadActor = MyActorSystem.ActorOf(Props.Create(() => new ConsoleReaderActor(consoleWriteActor)));
+            var consoleWriterActorProps = Props.Create<ConsoleWriterActor>();
+            var consoleWriterActor = MyActorSystem.ActorOf(consoleWriterActorProps, "consoleWriterActor");
+
+            var validationActorProps = Props.Create(() => new ValidationActor(consoleWriterActor));
+            var validationActor = MyActorSystem.ActorOf(validationActorProps, "validationActor");
+
+            var consoleReaderActorProps = Props.Create(() => new ConsoleReaderActor(validationActor));
+            var consoleReadActor = MyActorSystem.ActorOf(consoleReaderActorProps, "consoleReaderActor");
 
             // tell console reader to begin
             consoleReadActor.Tell(ConsoleReaderActor.StartCommand);
