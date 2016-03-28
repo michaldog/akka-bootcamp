@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms.DataVisualization.Charting;
-using Akka.Actor;
-
-namespace ChartApp.Actors
+﻿namespace ChartApp.Actors
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Forms.DataVisualization.Charting;
+    using Akka.Actor;
+
     public class ChartingActor : UntypedActor
     {
         #region Messages
