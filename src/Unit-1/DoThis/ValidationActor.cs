@@ -23,7 +23,7 @@
                 var isValid = IsValid(msg);
                 if (isValid)
                 {
-                    _consoleWriterActor.Tell(new Messages.InputSucess("Thanks! Message was valid"));
+                    _consoleWriterActor.Tell(new Messages.InputSuccess("Thanks! Message was valid"));
                 }
                 else
                 {

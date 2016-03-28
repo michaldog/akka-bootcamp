@@ -4,9 +4,9 @@
     {
         public class ContinueProcessing { }
 
-        public class InputSucess
+        public class InputSuccess
         {
-            public InputSucess(string reason)
+            public InputSuccess(string reason)
             {
                 Reason = reason;
             }
