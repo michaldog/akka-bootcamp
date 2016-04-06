@@ -7,7 +7,7 @@
     using Akka.Actor;
     using System.Windows.Forms;
 
-    public class ChartingActor : ReceiveActor
+    public class ChartingActor : ReceiveActor, IWithUnboundedStash
     {
         /// Maximum number of points we will allow in a series
         public const int MaxPoints = 250;
@@ -79,11 +79,15 @@
 
         private void Paused()
         {
+            Receive<AddSeries>(addSeries => Stash.Stash());
+            Receive<RemoveSeries>(removeSeries => Stash.Stash());
             Receive<Messages.Metric>(metric => HandleMetricsPaused(metric));
             Receive<TogglePause>(pause =>
             {
                 SetPauseButtonText(false);
                 UnbecomeStacked();
+
+                Stash.UnstashAll();
             });
         }
 
@@ -189,5 +193,7 @@
         {
             _pauseButton.Text = string.Format("{0}", !paused ? "PAUSE ||" : "RESUME ->");
         }
+
+        public IStash Stash { get; set; }
     }
 }
